@@ -35,19 +35,19 @@ spec:
         persistentVolumeClaim:
           claimName: {{ .Release.Name }}-mongodb-pv-claim
 ---
-kind: PersistentVolume
-apiVersion: v1
-metadata:
-  name: {{ .Release.Name }}-mongodb-pv-volume
-  labels:
-    type: local
-spec:
-  capacity:
-    storage: 20Gi
-  accessModes:
-    - ReadWriteOnce
-  hostPath:
-    path: "/mnt/"
+#kind: PersistentVolume
+#apiVersion: v1
+#metadata:
+#  name: {{ .Release.Name }}-mongodb-pv-volume
+#  labels:
+#    type: local
+#spec:
+#  capacity:
+#    storage: 20Gi
+#  accessModes:
+#    - ReadWriteOnce
+#  hostPath:
+#    path: "/mnt/"
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -59,3 +59,4 @@ spec:
   resources:
     requests:
       storage: 20Gi
+  storageClassName: rook-cephfs
